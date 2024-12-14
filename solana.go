@@ -1641,6 +1641,17 @@ func (c *Config) loadaccounts() error {
 }
 
 func main() {
+	logo := "  _           _       _                        \n" +
+		" | |         | |     | |                       \n" +
+		" | |__     __| |   __| |       ___   _ __ ___  \n" +
+		" | '_ \\   / _` |  / _` |      / __| | '_ ` _ \\ \n" +
+		" | | | | | (_| | | (_| |  " + lipgloss.NewStyle().Foreground(lipgloss.Color("#FF4D4D")).Render("_") + "  | (__  | | | | | |\n" +
+		" |_| |_|  \\__,_|  \\__,_| " + lipgloss.NewStyle().Foreground(lipgloss.Color("#FF4D4D")).Render("(_)") + "  \\___| |_| |_| |_|\n" +
+		"\n" +
+		"  ╭" + strings.Repeat("─", 42) + "╮\n" +
+		"  │" + strings.Repeat(" ", 12) + lipgloss.NewStyle().Foreground(lipgloss.Color("#FFD700")).Bold(true).Render("hdd.cm 推特低至1毛5") + strings.Repeat(" ", 11) + "│\n" +
+		"  ╰" + strings.Repeat("─", 42) + "╯"
+
 	logger = initLogger()
 
 	// 初始化配置
@@ -1653,13 +1664,13 @@ func main() {
 	}
 
 	for {
-		fmt.Println("\n" + lipgloss.NewStyle().Foreground(lipgloss.Color("#FFD700")).Render("=== hdd.cm 推特低至2毛  ==="))
-		fmt.Println("=== Solana 工具箱 ===")
+		fmt.Println(logo)
+		fmt.Println(" === Solana 工具箱 ===")
 
 		// 显示菜单
-		fmt.Println("\n=== 功能选项 ===")
+		fmt.Println("\n === 功能选项 ===")
 		for _, opt := range menuOptions {
-			fmt.Printf("%d. %s\n", opt.id, opt.description)
+			fmt.Printf(" %d. %s\n", opt.id, opt.description)
 		}
 
 		// 获取用户选择
